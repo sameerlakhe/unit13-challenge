@@ -1,0 +1,180 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "RoboAdvisor",
+    "version": "1",
+    "intents": [
+      {
+        "name": "RecommendPortfolio",
+        "version": "11",
+        "fulfillmentActivity": {
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-west-2:856630216932:function:recommendPortfolio",
+            "messageVersion": "1.0"
+          },
+          "type": "CodeHook"
+        },
+        "sampleUtterances": [
+          "I want to save money for my retirement",
+          "I'm {age} and I would like to invest for my retirement",
+          "I'm {age} and I want to invest for my retirement",
+          "I want the best option to invest for my retirement",
+          "I'm worried about my retirement",
+          "I want to invest for my retirement",
+          "I would like to invest for my retirement"
+        ],
+        "slots": [
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.NUMBER",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "How old are you?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 2,
+            "name": "age"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.US_FIRST_NAME",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "hank you for trusting me to help, could you please give me your name?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 1,
+            "name": "firstName"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.NUMBER",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "How much do you want to invest?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 3,
+            "name": "investmentAmount"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "riskLevelSlotType",
+            "slotTypeVersion": "2",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "what is risk level?"
+                }
+              ],
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"imageUrl\":\"https://unit13-challenge-icons.s3.us-west-2.amazonaws.com/low_risk1.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHwaCXVzLWVhc3QtMSJHMEUCIQDGKX4OoAqDYitkXPOwt%2BUypyvtCCMYRCRbPmc8H7XwFQIgBFBfXkaIgdcPQgktBckUShENulE6HQuRMu0c8xvBjmQq%2BwIIZRAEGgw4NTY2MzAyMTY5MzIiDC67YT79au4LS1wYQyrYAljNDl8%2FZUjAiQhUbX3WNOlm3d088sOMDfl2sSwYw7wutKGOUQiakTn3UCaNAWVWukBS%2F6rJdXLa1x6y27jtp3mrJDorBo6CRwJKLleru4NF0nu7G2diJKPRAgAYDoElmx8cik7xr99VGsftTb0roWqrZ5D2O8BdKhkt2H5KrUQgvVo4WNh62tN0EgRuxLHdzpOscTZtYxEJ3Pl0RDo8kzjlG1AcurhckjHaqVEQZZCMRbEgUi7f4krhP8faqWbN%2BbtmE%2B7%2BUN6KbJfy%2FlON1sqgFiLncYxJRUh%2FHFJ4B%2FHA%2FcQdLC3p2usF0dsUkwBYdMTJ1rn%2BQAeTgR1N58DYxzCNE3LXZzEDP2mVROM%2FQscsNcSJJK2n%2Bk%2FtQi71qvu1JtulFH%2B708pAtY1%2BmdvnrtGkktX%2BNd0tOzjZORLVngzsPGJ%2Buwh53EkBHy4OH%2FPxChVG0y3M%2BWuaMKmorpQGOrMCR6v4MocNadk2lv0VXd8uzJHj3nZ7k4BwaJ%2F3CdykAIMwzDFFerE%2BGCirnmm6aQvnTMdhTx07JoyG%2BPzNP9nFvqSzsHwOSGc5jLVQPo69qOVco4G7Vgh5%2Fj4rBbunJ3uc5lAW5VnfNkW6oKlHphXqxQAEyYEPL%2B81XuJcatW7uX4xkC%2F1nlQUFtZPR15EtreBI%2FCmYtApcJpPtQUYNi4g%2FnTKdr0rD%2FisLTmLGjkFblr9kxJv%2BHVOH9RfbWf6aktljZuv74DRiezFTp540w6%2FT1MwhQBYIqgWomI1ejyGAHKcdyzY72OxOtLPADMCmmRdgBsfdG17jAdCQFQktJmvgD1itFmD%2FKnVnv29XII5scE7yJhARMWG4LRkyRtpdvTVGxvUgCrw4IyuISn7nOYrzMRo8A%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220523T194658Z&X-Amz-SignedHeaders=host&X-Amz-Expires=43200&X-Amz-Credential=ASIA4O4ZDZDSOSBGWRGC%2F20220523%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Signature=b17b6dd2d2dcacdc1361326d9921f8e27f1c10803ac50f63b78584fba5df6ae1\",\"subTitle\":\"No risk at all\",\"title\":\"None\",\"buttons\":[{\"text\":\"None\",\"value\":\"None\"}]},{\"imageUrl\":\"https://unit13-challenge-icons.s3.us-west-2.amazonaws.com/low_risk1.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHwaCXVzLWVhc3QtMSJHMEUCIQDGKX4OoAqDYitkXPOwt%2BUypyvtCCMYRCRbPmc8H7XwFQIgBFBfXkaIgdcPQgktBckUShENulE6HQuRMu0c8xvBjmQq%2BwIIZRAEGgw4NTY2MzAyMTY5MzIiDC67YT79au4LS1wYQyrYAljNDl8%2FZUjAiQhUbX3WNOlm3d088sOMDfl2sSwYw7wutKGOUQiakTn3UCaNAWVWukBS%2F6rJdXLa1x6y27jtp3mrJDorBo6CRwJKLleru4NF0nu7G2diJKPRAgAYDoElmx8cik7xr99VGsftTb0roWqrZ5D2O8BdKhkt2H5KrUQgvVo4WNh62tN0EgRuxLHdzpOscTZtYxEJ3Pl0RDo8kzjlG1AcurhckjHaqVEQZZCMRbEgUi7f4krhP8faqWbN%2BbtmE%2B7%2BUN6KbJfy%2FlON1sqgFiLncYxJRUh%2FHFJ4B%2FHA%2FcQdLC3p2usF0dsUkwBYdMTJ1rn%2BQAeTgR1N58DYxzCNE3LXZzEDP2mVROM%2FQscsNcSJJK2n%2Bk%2FtQi71qvu1JtulFH%2B708pAtY1%2BmdvnrtGkktX%2BNd0tOzjZORLVngzsPGJ%2Buwh53EkBHy4OH%2FPxChVG0y3M%2BWuaMKmorpQGOrMCR6v4MocNadk2lv0VXd8uzJHj3nZ7k4BwaJ%2F3CdykAIMwzDFFerE%2BGCirnmm6aQvnTMdhTx07JoyG%2BPzNP9nFvqSzsHwOSGc5jLVQPo69qOVco4G7Vgh5%2Fj4rBbunJ3uc5lAW5VnfNkW6oKlHphXqxQAEyYEPL%2B81XuJcatW7uX4xkC%2F1nlQUFtZPR15EtreBI%2FCmYtApcJpPtQUYNi4g%2FnTKdr0rD%2FisLTmLGjkFblr9kxJv%2BHVOH9RfbWf6aktljZuv74DRiezFTp540w6%2FT1MwhQBYIqgWomI1ejyGAHKcdyzY72OxOtLPADMCmmRdgBsfdG17jAdCQFQktJmvgD1itFmD%2FKnVnv29XII5scE7yJhARMWG4LRkyRtpdvTVGxvUgCrw4IyuISn7nOYrzMRo8A%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220523T194658Z&X-Amz-SignedHeaders=host&X-Amz-Expires=43200&X-Amz-Credential=ASIA4O4ZDZDSOSBGWRGC%2F20220523%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Signature=b17b6dd2d2dcacdc1361326d9921f8e27f1c10803ac50f63b78584fba5df6ae1\",\"subTitle\":\"Just a bit of risk\",\"title\":\"Very low or Low\",\"buttons\":[{\"text\":\"VeryLow\",\"value\":\"VeryLow\"},{\"text\":\"Low\",\"value\":\"Low\"}]},{\"imageUrl\":\"https://unit13-challenge-icons.s3.us-west-2.amazonaws.com/medium_risk1.png?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHwaCXVzLWVhc3QtMSJHMEUCIQDGKX4OoAqDYitkXPOwt%2BUypyvtCCMYRCRbPmc8H7XwFQIgBFBfXkaIgdcPQgktBckUShENulE6HQuRMu0c8xvBjmQq%2BwIIZRAEGgw4NTY2MzAyMTY5MzIiDC67YT79au4LS1wYQyrYAljNDl8%2FZUjAiQhUbX3WNOlm3d088sOMDfl2sSwYw7wutKGOUQiakTn3UCaNAWVWukBS%2F6rJdXLa1x6y27jtp3mrJDorBo6CRwJKLleru4NF0nu7G2diJKPRAgAYDoElmx8cik7xr99VGsftTb0roWqrZ5D2O8BdKhkt2H5KrUQgvVo4WNh62tN0EgRuxLHdzpOscTZtYxEJ3Pl0RDo8kzjlG1AcurhckjHaqVEQZZCMRbEgUi7f4krhP8faqWbN%2BbtmE%2B7%2BUN6KbJfy%2FlON1sqgFiLncYxJRUh%2FHFJ4B%2FHA%2FcQdLC3p2usF0dsUkwBYdMTJ1rn%2BQAeTgR1N58DYxzCNE3LXZzEDP2mVROM%2FQscsNcSJJK2n%2Bk%2FtQi71qvu1JtulFH%2B708pAtY1%2BmdvnrtGkktX%2BNd0tOzjZORLVngzsPGJ%2Buwh53EkBHy4OH%2FPxChVG0y3M%2BWuaMKmorpQGOrMCR6v4MocNadk2lv0VXd8uzJHj3nZ7k4BwaJ%2F3CdykAIMwzDFFerE%2BGCirnmm6aQvnTMdhTx07JoyG%2BPzNP9nFvqSzsHwOSGc5jLVQPo69qOVco4G7Vgh5%2Fj4rBbunJ3uc5lAW5VnfNkW6oKlHphXqxQAEyYEPL%2B81XuJcatW7uX4xkC%2F1nlQUFtZPR15EtreBI%2FCmYtApcJpPtQUYNi4g%2FnTKdr0rD%2FisLTmLGjkFblr9kxJv%2BHVOH9RfbWf6aktljZuv74DRiezFTp540w6%2FT1MwhQBYIqgWomI1ejyGAHKcdyzY72OxOtLPADMCmmRdgBsfdG17jAdCQFQktJmvgD1itFmD%2FKnVnv29XII5scE7yJhARMWG4LRkyRtpdvTVGxvUgCrw4IyuISn7nOYrzMRo8A%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220523T194811Z&X-Amz-SignedHeaders=host&X-Amz-Expires=43200&X-Amz-Credential=ASIA4O4ZDZDSOSBGWRGC%2F20220523%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Signature=a2659443a7e6e1bf551a702570ce093b9dc15d9e65dffa0cb61424f4d0a979f8\",\"subTitle\":\"Let's start becoming wild\",\"title\":\"Medium\",\"buttons\":[{\"text\":\"Medium\",\"value\":\"Medium\"}]},{\"imageUrl\":\"https://unit13-challenge-icons.s3.us-west-2.amazonaws.com/very_high_risk1.jpg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHwaCXVzLWVhc3QtMSJHMEUCIQDGKX4OoAqDYitkXPOwt%2BUypyvtCCMYRCRbPmc8H7XwFQIgBFBfXkaIgdcPQgktBckUShENulE6HQuRMu0c8xvBjmQq%2BwIIZRAEGgw4NTY2MzAyMTY5MzIiDC67YT79au4LS1wYQyrYAljNDl8%2FZUjAiQhUbX3WNOlm3d088sOMDfl2sSwYw7wutKGOUQiakTn3UCaNAWVWukBS%2F6rJdXLa1x6y27jtp3mrJDorBo6CRwJKLleru4NF0nu7G2diJKPRAgAYDoElmx8cik7xr99VGsftTb0roWqrZ5D2O8BdKhkt2H5KrUQgvVo4WNh62tN0EgRuxLHdzpOscTZtYxEJ3Pl0RDo8kzjlG1AcurhckjHaqVEQZZCMRbEgUi7f4krhP8faqWbN%2BbtmE%2B7%2BUN6KbJfy%2FlON1sqgFiLncYxJRUh%2FHFJ4B%2FHA%2FcQdLC3p2usF0dsUkwBYdMTJ1rn%2BQAeTgR1N58DYxzCNE3LXZzEDP2mVROM%2FQscsNcSJJK2n%2Bk%2FtQi71qvu1JtulFH%2B708pAtY1%2BmdvnrtGkktX%2BNd0tOzjZORLVngzsPGJ%2Buwh53EkBHy4OH%2FPxChVG0y3M%2BWuaMKmorpQGOrMCR6v4MocNadk2lv0VXd8uzJHj3nZ7k4BwaJ%2F3CdykAIMwzDFFerE%2BGCirnmm6aQvnTMdhTx07JoyG%2BPzNP9nFvqSzsHwOSGc5jLVQPo69qOVco4G7Vgh5%2Fj4rBbunJ3uc5lAW5VnfNkW6oKlHphXqxQAEyYEPL%2B81XuJcatW7uX4xkC%2F1nlQUFtZPR15EtreBI%2FCmYtApcJpPtQUYNi4g%2FnTKdr0rD%2FisLTmLGjkFblr9kxJv%2BHVOH9RfbWf6aktljZuv74DRiezFTp540w6%2FT1MwhQBYIqgWomI1ejyGAHKcdyzY72OxOtLPADMCmmRdgBsfdG17jAdCQFQktJmvgD1itFmD%2FKnVnv29XII5scE7yJhARMWG4LRkyRtpdvTVGxvUgCrw4IyuISn7nOYrzMRo8A%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220523T194842Z&X-Amz-SignedHeaders=host&X-Amz-Expires=43200&X-Amz-Credential=ASIA4O4ZDZDSOSBGWRGC%2F20220523%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Signature=975b2264814acb6d95d4f1631263252c0adb2e000b57f64787f7e8d654af8880\",\"subTitle\":\"I have no fear!\",\"title\":\"High or Very High\",\"buttons\":[{\"text\":\"High\",\"value\":\"High\"},{\"text\":\"Very High\",\"value\":\"VeryHigh\"}]}]}",
+              "maxAttempts": 2
+            },
+            "priority": 4,
+            "defaultValueSpec": {
+              "defaultValueList": []
+            },
+            "name": "riskLevel"
+          }
+        ],
+        "dialogCodeHook": {
+          "uri": "arn:aws:lambda:us-west-2:856630216932:function:recommendPortfolio",
+          "messageVersion": "1.0"
+        }
+      }
+    ],
+    "slotTypes": [
+      {
+        "name": "riskLevelSlotType",
+        "version": "2",
+        "enumerationValues": [
+          {
+            "value": "High",
+            "synonyms": [
+              "High"
+            ]
+          },
+          {
+            "value": "Low",
+            "synonyms": [
+              "Low"
+            ]
+          },
+          {
+            "value": "Medium",
+            "synonyms": [
+              "Medium"
+            ]
+          },
+          {
+            "value": "VeryHigh",
+            "synonyms": [
+              "VeryHigh"
+            ]
+          },
+          {
+            "value": "None",
+            "synonyms": [
+              "None"
+            ]
+          },
+          {
+            "value": "VeryLow",
+            "synonyms": [
+              "VeryLow"
+            ]
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ],
+    "voiceId": "Salli",
+    "childDirected": false,
+    "locale": "en-US",
+    "idleSessionTTLInSeconds": 300,
+    "clarificationPrompt": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, can you please repeat that?"
+        }
+      ],
+      "maxAttempts": 5
+    },
+    "abortStatement": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, I could not understand. Goodbye."
+        }
+      ]
+    },
+    "detectSentiment": false,
+    "enableModelImprovements": false
+  }
+}
